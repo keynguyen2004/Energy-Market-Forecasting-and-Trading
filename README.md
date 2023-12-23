@@ -20,8 +20,8 @@ Before building a forecasting model, we need to
        
     2. Remove multicollinearity: We use correlation analysis through the correlation matrix and variance inflation factor to determine the bivariate and multivariate collinearity, respectively. In that way, we can selected and remove the independent variables from our input to our model.
        <p float="left">
-         <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/731738b4-ea36-43a7-9069-efc74227a523" width="500" heigh="500" />
-         <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/8ff3d16a-e8ae-4382-8748-235955e8723c" width="400" heigh="500" />
+         <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/731738b4-ea36-43a7-9069-efc74227a523" width="300" heigh="300" />
+         <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/8ff3d16a-e8ae-4382-8748-235955e8723c" width="200" heigh="300" />
        </p>
               
 
@@ -46,6 +46,17 @@ To evaluate the models performance for regression, (unlike classification proble
 3.	Adjusted R-Squared: As new features are added to the model, the R-Squared value either increases or remains constant. R-Squared does not penalize you for including useless features in your model. R-Squared is multiplied by the number of independent variables to correct this. Because it accounts for increasing predictors and only shows improvement if there is one, adjusted R-Squared is always lower than R-Squared.
 
 ### Result: Forecasting model
+
+<p float="left">
+    <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/cab92182-6c4b-41d6-9e00-e9a9d3ff972b" width="200" heigh="400" />
+    <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/c71167d4-af8e-4993-9a31-e5a541df2ccb" width="200" heigh="400" />
+</p>
+
+
+![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/f365b6b3-7870-447e-b8af-4a9762347436)
+![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/92dec962-3fb8-46cf-8e07-69986e896b55)
+
+
 There's a clear difference between the two linear models and the two tree-based models. The linear models root mean square error is lower in the test data than that in the train data, while the R-Squared and Adjusted R-Squared is greater in the test data than that in the train data. This implies that the linear models are able to generalize for the dataset and explain the variance in the second auction price better.
 
 On the other hand, the tree-based model displayed higher mean square error in the test data than that in the train data, while the R-Squared and Adjusted R-Squared is less in the test data than that in the train data. This signal over-fitting, as the model perform extremely well for the train data but not comparable for test data.
