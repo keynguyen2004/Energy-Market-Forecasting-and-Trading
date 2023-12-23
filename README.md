@@ -52,10 +52,10 @@ To evaluate the models performance for regression, (unlike classification proble
     <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/c71167d4-af8e-4993-9a31-e5a541df2ccb" width="200" heigh="400" />
 </p>
 
-
-![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/f365b6b3-7870-447e-b8af-4a9762347436)
-![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/92dec962-3fb8-46cf-8e07-69986e896b55)
-
+<p float="left">
+    <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/f365b6b3-7870-447e-b8af-4a9762347436" width="200" heigh="400" />
+    <img src="https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/92dec962-3fb8-46cf-8e07-69986e896b55" width="200" heigh="400" />
+</p>
 
 There's a clear difference between the two linear models and the two tree-based models. The linear models root mean square error is lower in the test data than that in the train data, while the R-Squared and Adjusted R-Squared is greater in the test data than that in the train data. This implies that the linear models are able to generalize for the dataset and explain the variance in the second auction price better.
 
