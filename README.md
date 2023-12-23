@@ -64,7 +64,29 @@ On the other hand, the tree-based model displayed higher mean square error in th
 One potential explanation is that tree-based models treat each row independently, so they will time series correlations (i.e., time series have an interdependence between observations). Therefore, when dealing with time series, the time-dependent structure is lost as the tree-based models assume the observations are independent.
 
 
-### Trading strategy: (rule, constraints)
+### Trading strategy
+To provide some context of the trading system, we need to be aware of the several conditions
 
+1. There's a 5 GBP/MWh fee per trade (to account for tax and additional fee)
+2. The bid is sequential: submit your bids for the first auction, wait for its results and afterwards submit your bids for the second auction
+3. Net position: As a non-physical trader, our net position from the two auction trades should be zero for all timesteps, as we will not be able to provide this net position to the grid the following day. System prices will be used to settle the difference between our net market position after both auctions and the energy you can supply.
 
-### Result: Trading strategy + image of tradeoff
+To elaborate on the net position and system prices,
+
+1. When market participant has consumed more/generated less power, the participant need to buy the offsetting amount of power at the system price.
+2. When market participant has consumed less/generated more power, the participant need to sell the offsetting amount of power at the system price.
+
+Regarding the trading strategy, we can strategize using the first and second auction price as our basis, and then incorporate the system price determine if we can gain additional profit from it.
+
+### Result
+
+We start off with a basic strategy where if the forecasted price of the second auction outweights the combined price of the forecasted price of the first auction and the trading cost, we woukd buy in the first auction and sell in the second auction (and vice versa). Then, we use the system price to execute more trade where the bid is not accepted in the first auction. From there, we've developed a system that take advantage of the system price where you can settle an imbalance position using a lower/upper bound that trade.
+
+![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/2f3c89f4-5047-4e97-9cc6-5fa4b01e18a8)
+
+From the trading strategy, we can see that
+
+1. **Rate of return**: Our rate of return has increase steadily as our bound increase, but it level off at around 14.6% when the bound reach 65.
+2. **Non-trading activity**: As we expected, the higher the bound, the higher the percentage of non-trading activity. We can see, as we reach the end, we achieve a 90% non-trading activity. In other words, out of 24 bids per day, we would only execute 2.4 (so 2-3) bids on average, as we are being more selective and wanting to ensure the trade satisfy our bound
+3. **Total profit**: Overall, there's a decreasing pattern of the total profit, which is understandable as our percentage of non-trading activity has increased, we are making less money from less trade
+
