@@ -71,7 +71,7 @@ To provide some context of the trading system, we need to be aware of the severa
 2. The bid is sequential: submit your bids for the first auction, wait for its results and afterwards submit your bids for the second auction
 3. Net position: As a non-physical trader, our net position from the two auction trades should be zero for all timesteps, as we will not be able to provide this net position to the grid the following day. System prices will be used to settle the difference between our net market position after both auctions and the energy you can supply.
 
-To elaborate on the net position and system prices, as a non-physical trader, our net position resulting from the trades on the two auctions should be zero, as we cannot provide this net position to the grid on the next day. The difference between our net market position after both auctions and the energy you can provide will be settled with the so-called **system prices**.
+To elaborate on the net position and system prices, as a non-physical trader, our net position resulting from the trades on the two auctions should be zero, as we cannot provide this net position to the grid on the next day. The difference between our net market position after both auctions and the energy you can provide will be settled with the so-called **system prices**, which can be consider as selling to/buying from the government
 
 1. When market participant has consumed more/generated less power, the participant need to buy the offsetting amount of power at the system price.
 2. When market participant has consumed less/generated more power, the participant need to sell the offsetting amount of power at the system price.
@@ -81,6 +81,13 @@ Regarding the trading strategy, we can strategize using the first and second auc
 ### Result
 
 We start off with a basic strategy where if the forecasted price of the second auction outweights the combined price of the forecasted price of the first auction and the trading cost, we woukd buy in the first auction and sell in the second auction (and vice versa). Then, we use the system price to execute more trade where the bid is not accepted in the first auction. From there, we've developed a system that take advantage of the system price where you can settle an imbalance position using a lower/upper bound that trade.
+
+**Bound**: The bound defined the range of price to which we can trade and leverage the system price
+
+1. Lower bound: The price at which if the forecasted system price is below it, we can sell at the auction price and buy the imbalance at (expectedly higher) system price. $\text{Lower bound = max(forecasted 1st auction price, forecasted 2nd auction price) - Difference}$
+2. Upper bound: The price at which if the forecasted system price is above it, we can buy at the auction price and sell the imbalance at (expectedly lower) system price. $\text{Upper bound = min(forecasted 1st auction price, forecasted 2nd auction price) + Difference}$
+
+Where the difference is a pre-determined number that should at least cover the cost per trade (i.e., 5)
 
 ![image](https://github.com/keynguyen2004/Energy-Market-Forecasting-and-Trading/assets/110079224/2f3c89f4-5047-4e97-9cc6-5fa4b01e18a8)
 
